@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-express-deployment
+  labels:
+    app: node-express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-express
+  template:
+    metadata:
+      labels:
+        app: node-express
+    spec:
+      containers:
+      - name: node-express
+        image: jojimail/node-express:1.0
+        ports:
+        - containerPort: 3000
